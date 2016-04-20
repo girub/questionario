@@ -29,16 +29,18 @@ class Msv_questions_model extends CI_Model {
      */
     public function getQuestions($que_sur_id) {
 
-        $result = new stdClass();
-        $result->validation = true;
-        $this->db->select('que_text, que_help_text');
+        $this->db->select('msv_questions.que_text, msv_questions.que_help_text');
         $this->db->from('msv_questions');
+         $this->db->join('msv_variants', 'msv_questions.que_id = msv_variants.var_que_id');
         $this->db->where('que_sur_id', $que_sur_id);
+        
+        
         $query = $this->db->get();
+        
+        var_dump($this->db->last_query());die();
         $res = $query->result();
-        $result->data = $res;
-        $result->httpResponse = 200;
-        return $result;
+       
+        return $res;
     }
 
     public function getStatsAll($idUser, $dateFrom, $dateTo, $idInvoiceSupplier = null, $idInvoiceRecipient = null, $orderBy = null, $orderType = null, $limit = null, $offset = null) {

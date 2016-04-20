@@ -24,7 +24,7 @@ class Msv_surveys_model extends CI_Model {
     public function getSurveys() {
 
         
-        $this->db->select('sur_title');
+        $this->db->select('sur_id, sur_title');
         $this->db->from('msv_surveys');
      
         $query = $this->db->get();

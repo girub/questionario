@@ -81,7 +81,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             
             foreach ($data as $item):?>
 
-            <li><a href="Welcome"><?php echo $item->sur_title;?></a></li>
+            <li><a href="<?php echo site_url('/Questions/index/' . $item->sur_id); ?>"><?php echo $item->sur_title;?></a></li>
 
 <?php endforeach;?>
             

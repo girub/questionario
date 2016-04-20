@@ -26,18 +26,19 @@ class Questions extends CI_Controller {
     }
     
     
+    
+    
     /**
      * Welcome page - show current opertaive engage time frames and previously access
      */
-    function index() {
+    function index($que_sur_id) {
 
-         $que_sur_id = 1;
+         //$que_sur_id = 1;
         
         
         $this->load->model('Msv_questions_model');
         $obj = $this->Msv_questions_model->getQuestions($que_sur_id);
-        
-            
+           
         $this->load->view('questions', $obj->data);
       
     }
